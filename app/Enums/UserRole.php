@@ -4,19 +4,18 @@ namespace App\Enums;
 
 use Mokhosh\FilamentKanban\Concerns\IsKanbanStatus;
 
-enum UserStatus: string
+enum UserRole: string
 {
     use IsKanbanStatus;
 
-    case PENDING = 'pending';
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
+    case USER = 'user';
+    case ADMIN = 'admin';
 
     public static function kanbanCases(): array
     {
         return [
-            static::PENDING,
-            static::ACTIVE,
+            static::USER,
+            static::ADMIN,
         ];
     }
 

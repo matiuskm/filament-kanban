@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Lorem Ipsum',
             'email' => 'admin@admin.com',
+            'role' => 'admin',
+            'status' => 'active',
         ]);
     }
 }
