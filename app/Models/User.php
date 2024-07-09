@@ -6,10 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Sortable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SortableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'status'
+        'status',
+        'order_column'
     ];
 
     /**
@@ -46,4 +49,9 @@ class User extends Authenticatable
             'status' => \App\Enums\UserStatus::class,
         ];
     }
+
+    public $sortable = [
+        'order_column_name' => 'order_column',
+        'sort_when_creating' => true,
+    ];
 }

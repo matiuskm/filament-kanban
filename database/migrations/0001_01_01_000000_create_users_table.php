@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['pending', 'active'])->default('pending');
+            $table->string('status')->default('pending');
+            $table->string('order_column');
             $table->rememberToken();
             $table->timestamps();
         });
